@@ -10,24 +10,31 @@ stages:
   - job: First_job
     steps:
     - bash: echo Build First job
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranch)
+    - bash: echo $(Build.StagingDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -lrth $(System.DefaultWorkingDirectory)    
+    - bash: echo $(Build.ArtifactStagingDirectory)    
     - bash: echo $(pipeline_level_variable)
-  - job: Second_job
-    steps:
-    - bash: echo Build Second job   
+  # - job: Second_job
+  #   steps:
+  #   - bash: echo Build Second job   
 
-- stage: Devdeploy
-  variables:
-    environment: Dev
-  dependsOn: build
-  jobs:
-  - job: Dev_Deploy_job
-    steps:
-    - bash: echo $(environment) deploy Second job   
-- stage: Prod_Deploy
-  variables:
-    environment: prod
-  dependsOn: build
-  jobs:
-  - job: Prod_Deploy_job
-    steps:
-    - bash: echo $(environment) deploy Second job   
+# - stage: Devdeploy
+#   variables:
+#     environment: Dev
+#   dependsOn: build
+#   jobs:
+#   - job: Dev_Deploy_job
+#     steps:
+#     - bash: echo $(environment) deploy Second job   
+# - stage: Prod_Deploy
+#   variables:
+#     environment: prod
+#   dependsOn: build
+#   jobs:
+#   - job: Prod_Deploy_job
+#     steps:
+#     - bash: echo $(environment) deploy Second job   
