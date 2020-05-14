@@ -10,7 +10,7 @@ stages:
   - job: First_job
     steps:
     - bash: echo Build First job
-    - bash: java --version
+#    - bash: java --version
     - bash: python --version
     - bash: node --version
     - bash: mvn --version            
