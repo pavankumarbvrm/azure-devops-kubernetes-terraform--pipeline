@@ -14,24 +14,17 @@ stages:
     - bash: python --version
     - bash: node --version
     - bash: mvn --version            
-
-
-    # - bash: echo $(Build.BuildNumber)
-    # - bash: echo $(Build.BuildId)
-    # - bash: echo $(Build.SourceBranch)
-    # - bash: echo $(Build.StagingDirectory)
-    # - bash: echo $(System.DefaultWorkingDirectory)
-      - bash: ls -lrth $(System.DefaultWorkingDirectory)
-      - bash: ls -lrth $(Build.ArtifactStagingDirectory)    
-      - task: CopyFiles@2
-        inputs:
-          SourceFolder: '$(System.DefaultWorkingDirectory)'
+    - bash: ls -lrth $(System.DefaultWorkingDirectory)
+    - bash: ls -lrth 
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
           Contents: |
             **/*.yaml
             **/*.tf
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      - bash: ls -lrth $(System.DefaultWorkingDirectory)
-      - bash: ls -lrth $(Build.ArtifactStagingDirectory)
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - bash: ls -lrth $(System.DefaultWorkingDirectory)
+    - bash: ls -lrth $(Build.ArtifactStagingDirectory)
 
     # - bash: echo $(pipeline_level_variable)
   # - job: Second_job
