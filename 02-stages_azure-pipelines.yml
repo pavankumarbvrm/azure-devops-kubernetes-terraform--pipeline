@@ -24,7 +24,20 @@ stages:
           **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash: ls -lrth $(System.DefaultWorkingDirectory)
-    - bash: ls -lrth $(Build.ArtifactStagingDirectory)
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'Myartifact'
+        publishLocation: 'Container'
+
+
+
+
+
+
+
+
 
     # - bash: echo $(pipeline_level_variable)
   # - job: Second_job
