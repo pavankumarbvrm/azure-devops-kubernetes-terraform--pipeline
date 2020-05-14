@@ -5,13 +5,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-
 - stage: build
   jobs:
   - job: First job
     steps:
     - bash: echo Build First job
-  jobs:
   - job: Second job
     steps:
     - bash: echo Build Second job   
