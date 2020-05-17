@@ -22,7 +22,7 @@ stages:
   # - job: buildjob
   #   stage:;
   #   - bash: echo "Start deve deploy"
-  - deployment: DevDeploy job
+  - deployment: DevDeployjob
     environment: Dev
     strategy:
       runOnce:
