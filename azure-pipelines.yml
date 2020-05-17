@@ -1,17 +1,36 @@
 trigger:
 - master
 
-strategy:
-  matrix:
-    linux:
-      operatingSystem: 'ubuntu-latest'
-    mac:
-      operatingSystem: 'macos-latest'
+# strategy:
+#   matrix:
+#     linux:
+#       operatingSystem: 'ubuntu-latest'
+#     mac:
+#       operatingSystem: 'macos-latest'
 
 pool:
-  vmImage: $(operatingSystem)
+  vmImage: 'ubuntu-latest'
 
+stages:
+- stage: build
+  jobs:
+  - job: buildjob
+    stage:;
+    - bash: echo "doing build"
+- stage: DevDeploy
+  jobs:
+  # - job: buildjob
+  #   stage:;
+  #   - bash: echo "Start deve deploy"
+  - deployment: DevDeploy job
+    environment: Dev
+    strategy:
+      runonce:
+        deploy:
+          steps:
+          - script: echo deploy to dev
 
+    
 steps:
 - script: echo running on $(operatingSystem)
   displayName: 'Run a one-line script'
