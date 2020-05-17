@@ -15,7 +15,7 @@ stages:
 - stage: build
   jobs:
   - job: buildjob
-    stage:;
+    steps:
     - bash: echo "doing build"
 - stage: DevDeploy
   jobs:
